@@ -1,0 +1,186 @@
+syntax = "proto3";
+package jaxrs.example;
+import "google/protobuf/any.proto";
+option java_package = "jaxrs.example";
+option java_outer_classname = "CC1_proto";
+
+service CC1Service {
+// p/ready gEmpty GET sync
+  rpc ready (GeneralEntityMessage) returns (gString);
+// p/boolean gBoolean POST sync
+  rpc getBoolean (GeneralEntityMessage) returns (gBoolean);
+// p/Boolean gBoolean POST sync
+  rpc getBooleanWrapper (GeneralEntityMessage) returns (gBoolean);
+// p/byte gByte POST sync
+  rpc getByte (GeneralEntityMessage) returns (gByte);
+// p/Byte gByte POST sync
+  rpc getByteWrapper (GeneralEntityMessage) returns (gByte);
+// p/short gShort POST sync
+  rpc getShort (GeneralEntityMessage) returns (gShort);
+// p/Short gShort POST sync
+  rpc getShortWrapper (GeneralEntityMessage) returns (gShort);
+// p/int gInteger POST sync
+  rpc getInt (GeneralEntityMessage) returns (gInteger);
+// p/Integer gInteger POST sync
+  rpc getInteger (GeneralEntityMessage) returns (gInteger);
+// p/long gLong POST sync
+  rpc getLong (GeneralEntityMessage) returns (gLong);
+// p/Long gLong POST sync
+  rpc getLongWrapper (GeneralEntityMessage) returns (gLong);
+// p/float gFloat POST sync
+  rpc getFloat (GeneralEntityMessage) returns (gFloat);
+// p/Float gFloat POST sync
+  rpc getFloatWrapper (GeneralEntityMessage) returns (gFloat);
+// p/double gDouble POST sync
+  rpc getDouble (GeneralEntityMessage) returns (gDouble);
+// p/Double gDouble POST sync
+  rpc getDoubleWrapper (GeneralEntityMessage) returns (gDouble);
+// p/char gCharacter POST sync
+  rpc getChar (GeneralEntityMessage) returns (gCharacter);
+// p/Character gCharacter POST sync
+  rpc getCharacter (GeneralEntityMessage) returns (gCharacter);
+// p/string gString POST sync
+  rpc getString (GeneralEntityMessage) returns (gString);
+// p/response gEmpty GET sync
+  rpc getResponse (GeneralEntityMessage) returns (google.protobuf.Any);
+// p/async/cs gEmpty GET completionStage
+  rpc getResponseCompletionStage (GeneralEntityMessage) returns (gString);
+// p/cc7 gEmpty GET sync
+  rpc getCC7 (GeneralEntityMessage) returns (org_jboss_resteasy_example___CC7);
+// p/produces gEmpty GET sync
+  rpc produces (GeneralEntityMessage) returns (gString);
+// p/consumes gEmpty GET sync
+  rpc consumes (GeneralEntityMessage) returns (gString);
+// p/path/{p1}/param/{p2} gEmpty GET sync
+  rpc pathParams (GeneralEntityMessage) returns (gString);
+// p/query gEmpty GET sync
+  rpc queryParams (GeneralEntityMessage) returns (gString);
+// p/matrix/more gEmpty GET sync
+  rpc matrixParams (GeneralEntityMessage) returns (gString);
+// p/cookieParams gEmpty GET sync
+  rpc cookieParams (GeneralEntityMessage) returns (gString);
+// p/headerParams gEmpty GET sync
+  rpc headerParams (GeneralEntityMessage) returns (gString);
+// p/params/{p1}/list/{p1} gEmpty GET sync
+  rpc paramsList (GeneralEntityMessage) returns (gString);
+// p/params/{p1}/set/{p1} gEmpty GET sync
+  rpc paramsSet (GeneralEntityMessage) returns (gString);
+// p/params/{p1}/sortedset/{p1} gEmpty GET sync
+  rpc paramsSortedSet (GeneralEntityMessage) returns (gString);
+// p/suspend gEmpty GET suspended
+  rpc suspend (GeneralEntityMessage) returns (google.protobuf.Any);
+// p/context gEmpty GET sync
+  rpc context (GeneralEntityMessage) returns (gString);
+// p/inheritance org_jboss_resteasy_example___CC2 POST sync
+  rpc inheritance (GeneralEntityMessage) returns (org_jboss_resteasy_example___CC2);
+// p/reference org_jboss_resteasy_example___CC4 POST sync
+  rpc referenceField (GeneralEntityMessage) returns (org_jboss_resteasy_example___CC4);
+// p/m3 org_jboss_resteasy_example___CC4 POST sync
+  rpc m3 (GeneralEntityMessage) returns (gString);
+// p/m4 gInteger POST sync
+  rpc m4 (GeneralEntityMessage) returns (gBoolean);
+// p/m5 gEmpty GET sync
+  rpc m5 (GeneralEntityMessage) returns (gString);
+// p/m7 gInteger POST sync
+  rpc m7 (GeneralEntityMessage) returns (org_jboss_resteasy_example___CC6);
+// p/servletInfo gEmpty POST sync
+  rpc testServletInfo (GeneralEntityMessage) returns (gString);
+// q/found gEmpty GET sync
+  rpc found (GeneralEntityMessage) returns (gString);
+}
+
+message org_jboss_resteasy_example___CC7 {
+  int32 m = 1;
+  org_jboss_resteasy_example___CC3 cC3___super = 2;
+}
+
+message org_jboss_resteasy_example___CC6 {
+  int32 l = 3;
+  org_jboss_resteasy_example___CC7 cc7 = 4;
+}
+
+message org_jboss_resteasy_example___CC3 {
+  string s = 5;
+}
+
+message org_jboss_resteasy_example___CC2 {
+  int32 j = 6;
+  org_jboss_resteasy_example___CC3 cC3___super = 7;
+}
+
+message org_jboss_resteasy_example___CC4 {
+  string s = 8;
+  org_jboss_resteasy_example___CC5 cc5 = 9;
+}
+
+message org_jboss_resteasy_example___CC5 {
+  int32 k = 10;
+}
+
+message gEmpty {}
+message gInteger   {int32  value = 11;}
+message gFloat     {float  value = 12;}
+message gCharacter {string value = 13;}
+message gByte      {int32  value = 14;}
+message gLong      {int64  value = 15;}
+message gString    {string value = 16;}
+message gBoolean   {bool   value = 17;}
+message gDouble    {double value = 18;}
+message gShort     {int32  value = 19;}
+
+message Header {
+   repeated string values = 20;
+}
+
+message Cookie {
+   string name = 21;
+   string value = 22;
+   int32  version = 23;
+   string path = 24;
+   string domain = 25;
+}
+
+message ServletInfo {
+   string characterEncoding = 26;
+   string clientAddress = 27;
+   string clientHost = 28;
+   int32  clientPort = 29;
+}
+
+message GeneralEntityMessage {
+   ServletInfo servletInfo = 30;
+   string URL = 31;
+   map<string, Header> headers = 32;
+   repeated Cookie cookies = 33;
+   oneof messageType {
+      gShort gShort_field = 34;
+      gInteger gInteger_field = 35;
+      gEmpty gEmpty_field = 36;
+      gByte gByte_field = 37;
+      gString gString_field = 38;
+      gFloat gFloat_field = 39;
+      gDouble gDouble_field = 40;
+      org_jboss_resteasy_example___CC2 org_jboss_resteasy_example___CC2_field = 41;
+      gCharacter gCharacter_field = 42;
+      org_jboss_resteasy_example___CC4 org_jboss_resteasy_example___CC4_field = 43;
+      gBoolean gBoolean_field = 44;
+      gLong gLong_field = 45;
+   }
+}
+
+message GeneralReturnMessage {
+   oneof messageType {
+      gShort gShort_field = 46;
+      gInteger gInteger_field = 47;
+      gEmpty gEmpty_field = 48;
+      gByte gByte_field = 49;
+      gString gString_field = 50;
+      gFloat gFloat_field = 51;
+      gDouble gDouble_field = 52;
+      org_jboss_resteasy_example___CC2 org_jboss_resteasy_example___CC2_field = 53;
+      gCharacter gCharacter_field = 54;
+      org_jboss_resteasy_example___CC4 org_jboss_resteasy_example___CC4_field = 55;
+      gBoolean gBoolean_field = 56;
+      gLong gLong_field = 57;
+   }
+}
